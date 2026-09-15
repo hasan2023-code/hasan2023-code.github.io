@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Hasan Raja — Java Full Stack Developer</title>
+<meta name="description" content="Java Full Stack Developer — low-latency distributed systems for wealth management, banking and healthcare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#131b2e;
+    --ink-soft:#3b4257;
+    --paper:#eef0ec;
+    --paper-raised:#e4e7e0;
+    --rule:#c9cdc3;
+    --copper:#b8722e;
+    --teal:#2f6f76;
+    --max:840px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    background:rgba(238,240,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    max-width:var(--max); margin:0 auto; padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav .mark{font-family:'Newsreader', serif; font-weight:600; font-size:1.05rem;}
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  .nav a{text-decoration:none; font-size:0.92rem; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .15s ease, color .15s ease;}
+  .nav a:hover{color:var(--ink); border-color:var(--copper);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:88px 0 64px; position:relative; overflow:hidden;}
+  .hero .eyebrow{
+    font-size:0.85rem; color:var(--teal); font-weight:500; margin-bottom:18px;
+    opacity:0; animation:rise .7s ease forwards; animation-delay:.05s;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    max-width:11.5ch;
+    opacity:0; animation:rise .8s ease forwards; animation-delay:.15s;
+  }
+  .hero h1 em{font-style:italic; color:var(--copper);}
+  .hero .sub{
+    margin-top:22px; max-width:56ch; color:var(--ink-soft); font-size:1.06rem;
+    opacity:0; animation:rise .8s ease forwards; animation-delay:.32s;
+  }
+  .stat-row{
+    margin-top:40px; display:flex; flex-wrap:wrap; gap:36px 48px;
+    padding-top:28px; border-top:1px solid var(--rule);
+    opacity:0; animation:rise .8s ease forwards; animation-delay:.48s;
+  }
+  .stat-row div{display:flex; flex-direction:column;}
+  .stat-row .n{font-family:'Newsreader', serif; font-size:1.9rem; font-weight:600; color:var(--ink);}
+  .stat-row .l{font-size:0.83rem; color:var(--ink-soft); margin-top:2px;}
+
+  @keyframes rise{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){
+    .hero .eyebrow,.hero h1,.hero .sub,.stat-row{animation:none; opacity:1;}
+  }
+
+  /* signal line motif */
+  .signal{position:absolute; right:-40px; top:40px; width:340px; height:180px; opacity:.55; pointer-events:none;}
+  @media (max-width:720px){.signal{display:none;}}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--rule);}
+  .label{
+    font-size:0.85rem; color:var(--teal); font-weight:500; margin-bottom:22px;
+  }
+  .lede{max-width:64ch; color:var(--ink-soft);}
+
+  /* ---------- About ---------- */
+  .about p{max-width:66ch; margin:0 0 16px;}
+  .about strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{border-left:1px solid var(--rule); margin-left:4px;}
+  .job{padding:0 0 40px 28px; position:relative;}
+  .job:last-child{padding-bottom:4px;}
+  .job::before{
+    content:''; position:absolute; left:-5px; top:6px; width:9px; height:9px;
+    background:var(--paper); border:2px solid var(--copper); border-radius:50%;
+  }
+  .job .when{font-size:0.85rem; color:var(--ink-soft); margin-bottom:6px;}
+  .job h3{font-size:1.25rem; margin-bottom:3px;}
+  .job .role{font-size:0.95rem; color:var(--teal); font-weight:500; margin-bottom:12px;}
+  .job ul{margin:0; padding-left:20px; color:var(--ink-soft);}
+  .job li{margin-bottom:8px;}
+  .job li strong{color:var(--ink); font-weight:600;}
+  .job .stack{margin-top:14px; font-size:0.85rem; color:var(--ink-soft); line-height:1.7;}
+  .job .stack span{
+    display:inline-block; border:1px solid var(--rule); border-radius:3px;
+    padding:2px 8px; margin:0 6px 6px 0; font-size:0.8rem; background:var(--paper-raised);
+  }
+
+  /* ---------- Selected work ---------- */
+  .work-item{padding:26px 0; border-bottom:1px solid var(--rule);}
+  .work-item:last-child{border-bottom:none;}
+  .work-item .tag{font-size:0.8rem; color:var(--copper); font-weight:500; margin-bottom:8px;}
+  .work-item h3{font-size:1.3rem; margin-bottom:10px; max-width:34ch;}
+  .work-item p{color:var(--ink-soft); max-width:62ch; margin:0 0 10px;}
+  .work-item .metric{color:var(--ink); font-weight:600;}
+
+  /* ---------- Skills ---------- */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:28px 40px;}
+  .skill-group h4{font-size:0.95rem; margin-bottom:10px; color:var(--ink);}
+  .skill-group p{margin:0; color:var(--ink-soft); font-size:0.92rem; line-height:1.75;}
+
+  /* ---------- Certifications ---------- */
+  .cert-list{list-style:none; margin:0; padding:0; columns:2; column-gap:40px;}
+  .cert-list li{margin-bottom:10px; break-inside:avoid; color:var(--ink-soft); font-size:0.94rem; padding-left:16px; position:relative;}
+  .cert-list li::before{content:'—'; position:absolute; left:0; color:var(--copper);}
+  @media (max-width:600px){.cert-list{columns:1;}}
+
+  /* ---------- Contact ---------- */
+  .contact h2{font-size:2rem; max-width:14ch; margin-bottom:18px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:14px 28px; margin-top:26px;}
+  .contact-links a{
+    text-decoration:none; font-size:0.98rem; color:var(--ink);
+    border-bottom:1px solid var(--copper); padding-bottom:2px;
+  }
+  footer{padding:30px 0 50px; color:var(--ink-soft); font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <span class="mark">MD Hasan Raja</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Selected Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <svg class="signal" viewBox="0 0 340 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polyline points="0,140 40,140 55,60 75,160 95,40 115,140 340,140" stroke="#2f6f76" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="75" cy="160" r="3.5" fill="#b8722e"/>
+      <circle cx="95" cy="40" r="3.5" fill="#b8722e"/>
+    </svg>
+    <div class="eyebrow">Java Full Stack Developer · Bangalore, India</div>
+    <h1>Systems that move <em>$2 trillion</em> and never blink.</h1>
+    <p class="sub">I design and build the low-latency backbones behind wealth-management and banking platforms — currently leading engineering on Wells Fargo's Advisory Platform, serving 15,000+ advisors who rely on it working correctly, every time.</p>
+    <div class="stat-row">
+      <div><span class="n">10+</span><span class="l">Years in Java &amp; distributed systems</span></div>
+      <div><span class="n">500K+</span><span class="l">Transactions processed daily</span></div>
+      <div><span class="n">99.9%</span><span class="l">Platform uptime</span></div>
+      <div><span class="n">60%</span><span class="l">Latency cut via Redis caching</span></div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap about">
+    <div class="label">About</div>
+    <p>I'm a backend-leaning full stack engineer who spends most of my time where <strong>correctness meets speed</strong> — the parts of a system where a bug isn't an inconvenience, it's a compliance incident or a mis-booked trade. Over the last decade that's meant architecting microservices for wealth management, healthcare, and insurance platforms that have to be fast, auditable, and right.</p>
+    <p>Right now I lead development on <strong>Wells Fargo Advisors' Advisory Platform</strong>, an end-to-end system spanning cash generation, position termination, and client instruction management for 5M+ accounts. I also spend a fair amount of time on the newer edge of the job — building <strong>GenAI-driven agentic tooling</strong> (RAG pipelines, LangGraph, Claude Code, GitHub Copilot agents) into real engineering workflows, with human review kept firmly in the loop.</p>
+    <p>Before this, I built systems for Blue Cross Blue Shield of Massachusetts, National Grid UK, and the UK's National Employee Savings Trust — across roles at Deloitte, IBM, and TCS.</p>
+  </section>
+
+  <section id="experience" class="wrap">
+    <div class="label">Experience</div>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="when">March 2021 — Present</div>
+        <h3>Wells Fargo</h3>
+        <div class="role">Lead Developer · Advisory Platform</div>
+        <ul>
+          <li>Architected <strong>end-to-end microservices</strong> in Java and Spring Boot supporting advisory workflows for <strong>5M+ wealth management accounts</strong>.</li>
+          <li>Engineered a <strong>Redis-based distributed caching layer</strong>, cutting latency by 60% for 15K+ concurrent advisor users.</li>
+          <li>Built a production <strong>GenAI agentic platform</strong> (LangChain, LangGraph, RAG over 500+ Confluence pages), lifting engineering productivity by 30%.</li>
+          <li>Directed <strong>agentic engineering adoption</strong> across a 6-person team — GitHub Copilot, Claude Code, and Cursor with human-in-the-loop review — improving delivery velocity by 40%.</li>
+        </ul>
+        <div class="stack">
+          <span>Java 18</span><span>Spring Boot</span><span>React 18</span><span>OpenShift</span><span>Kubernetes</span><span>Redis</span><span>MongoDB</span><span>Apache Kafka</span><span>Python</span>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2022 — 2024</div>
+        <h3>Wells Fargo</h3>
+        <div class="role">Senior Lead Developer · Fees Transformation</div>
+        <ul>
+          <li>Built a high-throughput pipeline processing <strong>10K+ files/day</strong> using Java's ForkJoinPool/CompletableFuture and Kafka-decoupled ingestion.</li>
+          <li>Shipped a <strong>React micro-frontend architecture</strong> with independent deployment and Apigee-managed API proxies.</li>
+        </ul>
+        <div class="stack">
+          <span>Java</span><span>React</span><span>Angular</span><span>Kafka</span><span>Drools</span><span>Redis</span><span>Spring Batch</span>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">May 2019 — Feb 2021</div>
+        <h3>Deloitte USI</h3>
+        <div class="role">Senior Developer · Health Care Services Corporation</div>
+        <ul>
+          <li>Configured Spring Boot services with clean IOC/DI and transaction management; documented APIs with Swagger.</li>
+          <li>Held code quality at 85% JUnit/Mockito coverage, reviewed via SonarQube.</li>
+        </ul>
+        <div class="stack"><span>Java 8</span><span>Spring Boot</span><span>IBM DB2</span><span>Angular 8</span></div>
+      </div>
+
+      <div class="job">
+        <div class="when">Apr 2017 — May 2019</div>
+        <h3>IBM India</h3>
+        <div class="role">Developer · National Grid UK / BCBSMA</div>
+        <ul>
+          <li>Migrated a legacy mainframe system to a Spring Boot + Angular microservice architecture.</li>
+          <li>Integrated Salesforce via SOAP and secured services with OAuth 2.0.</li>
+        </ul>
+        <div class="stack"><span>Java 8</span><span>Spring Framework</span><span>Salesforce</span><span>WebSphere</span></div>
+      </div>
+
+      <div class="job">
+        <div class="when">Mar 2014 — Apr 2017</div>
+        <h3>Tata Consultancy Services</h3>
+        <div class="role">Developer · National Employee Savings Trust, UK</div>
+        <ul>
+          <li>Built transaction-history batch reporting with Spring Batch and PL/SQL.</li>
+          <li>Delivered UI screens via JSF/JSP against client BRDs.</li>
+        </ul>
+        <div class="stack"><span>Java 7</span><span>JSF</span><span>Oracle</span><span>WebLogic</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <div class="label">Selected work</div>
+    <div class="work-item">
+      <div class="tag">Performance engineering</div>
+      <h3>Redis caching layer for a 15K-advisor platform</h3>
+      <p>Client portfolios, account data, and product datasets were re-fetched on every advisor action. I designed a distributed caching layer with a custom locking mechanism to prevent race conditions on concurrent account updates — cutting latency by <span class="metric">60%</span> while holding <span class="metric">100%</span> transaction integrity.</p>
+    </div>
+    <div class="work-item">
+      <div class="tag">Applied GenAI</div>
+      <h3>Agentic documentation search across 500+ Confluence pages</h3>
+      <p>Built a RAG pipeline (LangChain, LangGraph, ChromaDB, DistilBERT embeddings) that surfaces relevant Jira context and architectural history automatically, instead of engineers hunting through wikis. Manual knowledge-base queries dropped <span class="metric">70%</span>; team productivity rose <span class="metric">30%</span>.</p>
+    </div>
+    <div class="work-item">
+      <div class="tag">High-throughput systems</div>
+      <h3>10,000 files/day content-validation engine</h3>
+      <p>Parallelized ingestion of PDFs, DOCX, and structured data using Java's ForkJoinPool and a Kafka-decoupled pipeline, with a Drools rule engine validating content against dynamic business rules — sustained via Redis caching and Spring Batch.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="label">Technical skills</div>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h4>Core &amp; systems</h4>
+        <p>Java (OOPs, Collections, Streams, Concurrency API), System Design (HLD/LLD, distributed caching, CAP theorem, event sourcing), AOP, debugging race conditions &amp; deadlocks.</p>
+      </div>
+      <div class="skill-group">
+        <h4>Backend</h4>
+        <p>Spring (Core, MVC, Boot, Security, Batch, Cloud), RESTful &amp; GraphQL APIs, WebClient, API gateway patterns.</p>
+      </div>
+      <div class="skill-group">
+        <h4>Frontend</h4>
+        <p>React 18 (Hooks, micro-frontends), Angular 18 (Signals, standalone components), TypeScript, Bootstrap, Material UI.</p>
+      </div>
+      <div class="skill-group">
+        <h4>Data</h4>
+        <p>Oracle, MySQL, PostgreSQL, IBM DB2, MongoDB, Hibernate &amp; JPA.</p>
+      </div>
+      <div class="skill-group">
+        <h4>Cloud &amp; platform</h4>
+        <p>AWS, Azure, GCP/Apigee, PCF, OpenShift, Docker, Kubernetes, Helm.</p>
+      </div>
+      <div class="skill-group">
+        <h4>Event-driven</h4>
+        <p>Apache Kafka (producers/consumers), RabbitMQ, Redis Cache.</p>
+      </div>
+      <div class="skill-group">
+        <h4>DevOps &amp; quality</h4>
+        <p>Jenkins, Git, GitHub Actions, SonarQube, Checkmarx, BlackDuck, JUnit, Mockito, Cypress, Playwright.</p>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; emerging</h4>
+        <p>LangChain, LangGraph, RAG pipelines, Hugging Face Transformers, OpenAI &amp; Anthropic APIs, Claude Code, GitHub Copilot agents, prompt engineering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="label">Certifications</div>
+    <ul class="cert-list">
+      <li>Oracle Certified Java SE-7 Programmer (1Z0-803)</li>
+      <li>Deloitte Certified Full Stack Developer</li>
+      <li>Microsoft AZ-900: Azure Fundamentals</li>
+      <li>AWS Cloud Practitioner Essentials</li>
+      <li>IBM Badge — Blockchain Essentials</li>
+      <li>IBM Badge — Health and Care Industry Foundations</li>
+      <li>HackerRank — Python Programmer</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="wrap contact">
+    <h2>Let's talk about your systems.</h2>
+    <p class="lede">Open to conversations about backend architecture, performance engineering, and where applied GenAI actually earns its place in a delivery pipeline.</p>
+    <div class="contact-links">
+      <a href="mailto:hasan.raja.dev@gmail.com">hasan.raja.dev@gmail.com</a>
+      <a href="tel:+919593868594">+91 95938 68594</a>
+      <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  MD Hasan Raja · Bangalore, India — built with plain HTML &amp; CSS.
+</footer>
+
+</body>
+</html>
